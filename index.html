@@ -279,22 +279,21 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 /* ============================================
    SERVICES SECTION
    ============================================ */
-.services { padding: var(--section-padding) 0; background: var(--color-bg-elevated); position: relative; }
+.services { padding: var(--section-padding) 0; background: var(--color-bg-elevated); position: relative; overflow: visible; }
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
 .service-card {
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: 16px;
     padding: 24px;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     z-index: 1;
     cursor: pointer;
 }
-.service-card::before {
-    content: '';
+/* Expanded card overlay */
+.services-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -302,19 +301,24 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     height: 100vh;
     background: rgba(0,0,0,0);
     pointer-events: none;
-    transition: background 0.5s ease;
-    z-index: -1;
+    transition: background 0.4s ease;
+    z-index: 99;
 }
-.service-card:hover {
-    transform: scale(1.15);
-    border-color: var(--color-accent);
-    box-shadow: 0 25px 80px rgba(0,0,0,0.25);
-    z-index: 100;
-}
-.service-card:hover::before {
-    background: rgba(0,0,0,0.4);
+.services-overlay.active {
+    background: rgba(0,0,0,0.6);
     pointer-events: auto;
 }
+/* Expanded card state */
+.service-card-expanded {
+    position: fixed !important;
+    z-index: 1000 !important;
+    border-color: var(--color-accent);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.service-card-expanded .service-img { height: 250px; }
+.service-card-expanded h3 { font-size: 24px; }
+.service-card-expanded p { font-size: 16px; }
 .service-img { height: 180px; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
 .service-img .img-placeholder { height: 100%; border-radius: 12px; }
 .service-icon { width: 48px; height: 48px; background: var(--color-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -732,6 +736,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 
     <!-- Services Section -->
     <section id="services" class="services">
+        <div class="services-overlay"></div>
         <div class="container">
             <div class="section-header">
                 <p class="section-tag">What We Offer</p>
@@ -1359,6 +1364,95 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
         }
         
         // ============================================
+        // SERVICE CARD EXPANSION
+        // ============================================
+        function initCardExpansion() {
+            const cards = document.querySelectorAll('.service-card');
+            const overlay = document.querySelector('.services-overlay');
+            let expandedCard = null;
+            let originalRect = null;
+
+            if (!cards.length || !overlay) return;
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    if (expandedCard) return;
+
+                    // Store original position
+                    originalRect = card.getBoundingClientRect();
+
+                    // Set initial position (current position)
+                    card.style.position = 'fixed';
+                    card.style.top = originalRect.top + 'px';
+                    card.style.left = originalRect.left + 'px';
+                    card.style.width = originalRect.width + 'px';
+                    card.style.height = 'auto';
+                    card.style.margin = '0';
+
+                    // Force reflow
+                    card.offsetHeight;
+
+                    // Calculate center position for full width
+                    const containerWidth = Math.min(1200, window.innerWidth - 48);
+                    const targetLeft = (window.innerWidth - containerWidth) / 2;
+                    const targetTop = Math.max(100, (window.innerHeight - 400) / 2);
+
+                    // Animate to expanded state
+                    requestAnimationFrame(() => {
+                        card.classList.add('service-card-expanded');
+                        card.style.top = targetTop + 'px';
+                        card.style.left = targetLeft + 'px';
+                        card.style.width = containerWidth + 'px';
+                        overlay.classList.add('active');
+                    });
+
+                    expandedCard = card;
+                });
+            });
+
+            // Close on overlay click or mouse leave
+            overlay.addEventListener('click', closeExpanded);
+
+            function closeExpanded() {
+                if (!expandedCard || !originalRect) return;
+
+                const card = expandedCard;
+
+                // Animate back to original position
+                card.style.top = originalRect.top + 'px';
+                card.style.left = originalRect.left + 'px';
+                card.style.width = originalRect.width + 'px';
+                card.classList.remove('service-card-expanded');
+                overlay.classList.remove('active');
+
+                // Reset after animation
+                setTimeout(() => {
+                    card.style.position = '';
+                    card.style.top = '';
+                    card.style.left = '';
+                    card.style.width = '';
+                    card.style.height = '';
+                    card.style.margin = '';
+                    expandedCard = null;
+                    originalRect = null;
+                }, 500);
+            }
+
+            // Close when mouse leaves expanded card
+            document.addEventListener('mousemove', (e) => {
+                if (!expandedCard) return;
+                const rect = expandedCard.getBoundingClientRect();
+                const buffer = 20;
+                if (e.clientX < rect.left - buffer ||
+                    e.clientX > rect.right + buffer ||
+                    e.clientY < rect.top - buffer ||
+                    e.clientY > rect.bottom + buffer) {
+                    closeExpanded();
+                }
+            });
+        }
+
+        // ============================================
         // INIT ALL
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1387,7 +1481,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
             initMobileNav();
             initSmoothScroll();
             initForm();
-            initCardTilt();
+            initCardExpansion();
         });
     })();
     </script>

@@ -360,6 +360,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     opacity: 1;
     pointer-events: auto;
 }
+
+/* Placeholder to maintain grid space */
+.service-card-placeholder {
+    background: rgba(0,0,0,0.05);
+    border: 2px dashed var(--color-border);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
 .service-img { height: 180px; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
 .service-img .img-placeholder { height: 100%; border-radius: 12px; }
 .service-icon { width: 48px; height: 48px; background: var(--color-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -1410,7 +1418,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
             const cards = document.querySelectorAll('.service-card');
             const overlay = document.querySelector('.services-overlay');
             let expandedCard = null;
-            let originalRect = null;
+            let placeholder = null;
             let isAnimating = false;
 
             if (!cards.length || !overlay) return;
@@ -1423,22 +1431,30 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
                 closeBtn.setAttribute('aria-label', 'Close');
                 card.appendChild(closeBtn);
 
-                // Open on click instead of hover
+                // Open on click
                 card.addEventListener('click', (e) => {
                     if (e.target.classList.contains('card-close-btn')) return;
                     if (expandedCard || isAnimating) return;
 
                     isAnimating = true;
-                    originalRect = card.getBoundingClientRect();
+                    const rect = card.getBoundingClientRect();
 
+                    // Create placeholder to maintain grid space
+                    placeholder = document.createElement('div');
+                    placeholder.className = 'service-card-placeholder';
+                    placeholder.style.width = rect.width + 'px';
+                    placeholder.style.height = rect.height + 'px';
+                    card.parentNode.insertBefore(placeholder, card);
+
+                    // Set card to fixed at its current position
                     card.style.position = 'fixed';
-                    card.style.top = originalRect.top + 'px';
-                    card.style.left = originalRect.left + 'px';
-                    card.style.width = originalRect.width + 'px';
-                    card.style.height = 'auto';
+                    card.style.top = rect.top + 'px';
+                    card.style.left = rect.left + 'px';
+                    card.style.width = rect.width + 'px';
+                    card.style.height = rect.height + 'px';
                     card.style.margin = '0';
 
-                    card.offsetHeight;
+                    card.offsetHeight; // Force reflow
 
                     const containerWidth = Math.min(900, window.innerWidth - 48);
                     const targetLeft = (window.innerWidth - containerWidth) / 2;
@@ -1449,6 +1465,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
                         card.style.top = targetTop + 'px';
                         card.style.left = targetLeft + 'px';
                         card.style.width = containerWidth + 'px';
+                        card.style.height = 'auto';
                         overlay.classList.add('active');
                         setTimeout(() => { isAnimating = false; }, 500);
                     });
@@ -1472,17 +1489,23 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
             });
 
             function closeExpanded() {
-                if (!expandedCard || !originalRect || isAnimating) return;
+                if (!expandedCard || !placeholder || isAnimating) return;
 
                 isAnimating = true;
                 const card = expandedCard;
 
-                card.style.top = originalRect.top + 'px';
-                card.style.left = originalRect.left + 'px';
-                card.style.width = originalRect.width + 'px';
+                // Get placeholder position (this is where card should return)
+                const placeholderRect = placeholder.getBoundingClientRect();
+
+                // Animate back to placeholder position
+                card.style.top = placeholderRect.top + 'px';
+                card.style.left = placeholderRect.left + 'px';
+                card.style.width = placeholderRect.width + 'px';
+                card.style.height = placeholderRect.height + 'px';
                 card.classList.remove('service-card-expanded');
                 overlay.classList.remove('active');
 
+                // After animation, reset everything
                 setTimeout(() => {
                     card.style.position = '';
                     card.style.top = '';
@@ -1490,8 +1513,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
                     card.style.width = '';
                     card.style.height = '';
                     card.style.margin = '';
+
+                    // Remove placeholder
+                    if (placeholder && placeholder.parentNode) {
+                        placeholder.parentNode.removeChild(placeholder);
+                    }
+
                     expandedCard = null;
-                    originalRect = null;
+                    placeholder = null;
                     isAnimating = false;
                 }, 500);
             }

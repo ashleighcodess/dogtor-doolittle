@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogtor Doolittle | NJ Dog Training | Laurence Harbor, NJ</title>
+    <meta name="description" content="Professional dog training in Laurence Harbor, NJ. From basic obedience to behavioral training, Dogtor Doolittle transforms your dog's behavior. Free consultation available.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    --color-bg: #f9f9fb;
+    --color-bg-elevated: #ffffff;
+    --color-bg-card: #ffffff;
+    --color-text: #1a1a2e;
+    --color-text-muted: #5a5a72;
+    --color-text-subtle: #8a8a9a;
+    --color-accent: #e8a500;
+    --color-accent-hover: #f5b800;
+    --color-accent-dark: #c78f00;
+    --color-border: #e5e5eb;
+    --color-border-light: #d0d0d8;
+    --color-dark: #1a1a2e;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 1200px;
+    --section-padding: 100px;
+    --transition: 0.3s ease;
+    --shadow-sm: 0 2px 8px rgba(26,26,46,0.06);
+    --shadow-md: 0 4px 20px rgba(26,26,46,0.08);
+    --shadow-lg: 0 8px 40px rgba(26,26,46,0.12);
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.section-tag { display: inline-block; font-size: 14px; font-weight: 600; color: var(--color-accent-dark); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.section-title { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 20px; font-weight: 800; }
+.section-subtitle { font-size: 17px; color: var(--color-text-muted); max-width: 600px; line-height: 1.7; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header .section-subtitle { margin: 0 auto; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600; border-radius: 50px; border: 2px solid transparent; cursor: pointer; transition: all var(--transition); }
+.btn-primary { background: var(--color-dark); color: #ffffff; border-color: var(--color-dark); }
+.btn-primary:hover { background: var(--color-accent); color: var(--color-dark); border-color: var(--color-accent); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,26,46,0.2); }
+.btn-secondary { background: transparent; color: var(--color-dark); border-color: var(--color-border-light); }
+.btn-secondary:hover { background: var(--color-dark); color: #ffffff; border-color: var(--color-dark); }
+.btn-block { width: 100%; }
+
+/* Image Placeholders */
+.img-placeholder { background: linear-gradient(135deg, #f0f0f5 0%, #e5e5eb 100%); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-text-subtle); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; backdrop-filter: blur(0); border-bottom: 1px solid transparent; transition: all 0.3s ease; }
+.nav-container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; transition: color 0.3s ease; }
+.nav-logo svg { width: 32px; height: 32px; fill: var(--color-accent); transition: fill 0.3s ease; }
+.nav-menu { display: flex; align-items: center; gap: 32px; }
+.nav-menu a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); transition: color var(--transition); }
+.nav-menu a:hover { color: var(--color-accent); }
+.nav-cta { padding: 12px 24px; background: var(--color-accent); color: var(--color-dark); font-weight: 600; font-size: 14px; border-radius: 50px; transition: all var(--transition); }
+.nav-cta:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,165,0,0.4); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: #ffffff; transition: all 0.3s ease; }
+
+/* Nav scrolled state */
+.nav.is-scrolled { background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-border); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.nav.is-scrolled .nav-logo { color: var(--color-dark); }
+.nav.is-scrolled .nav-menu a { color: var(--color-text-muted); }
+.nav.is-scrolled .nav-menu a:hover { color: var(--color-accent-dark); }
+.nav.is-scrolled .nav-toggle span { background: var(--color-dark); }
+
+/* ============================================
+   HERO SECTION - Cinematic Video Style
+   ============================================ */
+.hero { 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    padding: 120px 0 80px; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* Video/Image Background */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.hero-bg video,
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Placeholder gradient when no video */
+.hero-bg-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3d2a1a 0%, #1a1208 50%, #2d1f12 100%);
+}
+
+/* Warm Brown Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(25, 18, 8, 0.85) 0%,
+        rgba(35, 25, 12, 0.75) 50%,
+        rgba(20, 15, 8, 0.8) 100%
+    );
+    z-index: 1;
+}
+
+.hero-container { 
+    max-width: var(--container-max); 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px; 
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag { 
+    display: inline-block; 
+    font-size: 13px; 
+    font-weight: 600; 
+    color: var(--color-accent); 
+    text-transform: uppercase; 
+    letter-spacing: 0.15em; 
+    margin-bottom: 20px; 
+    background: rgba(232,165,0,0.15); 
+    padding: 8px 16px; 
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+.hero-title { 
+    font-size: clamp(40px, 5.5vw, 64px); 
+    margin-bottom: 24px; 
+    line-height: 1.1; 
+    font-weight: 800;
+    color: #ffffff;
+}
+.hero-title .accent {
+    color: var(--color-accent);
+}
+.hero-subtitle { 
+    font-size: 17px; 
+    color: rgba(255,255,255,0.8); 
+    margin-bottom: 32px; 
+    line-height: 1.8; 
+}
+.hero-ctas { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+.hero-ctas .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-dark);
+    border-color: var(--color-accent);
+}
+.hero-ctas .btn-primary:hover {
+    background: var(--color-accent-hover);
+    box-shadow: 0 10px 30px rgba(232,165,0,0.4);
+}
+.hero-ctas .btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.3);
+}
+.hero-ctas .btn-secondary:hover {
+    background: #ffffff;
+    color: var(--color-dark);
+    border-color: #ffffff;
+}
+
+.hero-rating { display: flex; align-items: center; gap: 16px; }
+.hero-avatars { display: flex; }
+.hero-avatars .avatar { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background: rgba(255,255,255,0.15); 
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.2); 
+    margin-left: -12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 12px; 
+    font-weight: 600; 
+    color: #ffffff; 
+}
+.hero-avatars .avatar:first-child { margin-left: 0; }
+.rating-stars { display: flex; gap: 2px; }
+.rating-stars svg { width: 16px; height: 16px; fill: var(--color-accent); }
+.rating-info { display: flex; flex-direction: column; }
+.rating-score { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #ffffff; }
+.rating-text { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+/* Hero Images - Now floating over the video */
+.hero-images { position: relative; height: 500px; }
+.hero-img { 
+    position: absolute; 
+    border-radius: 16px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.hero-img-1 { width: 280px; height: 350px; top: 0; left: 0; z-index: 1; }
+.hero-img-2 { width: 200px; height: 250px; top: 60px; right: 40px; z-index: 2; }
+.hero-img-3 { width: 220px; height: 280px; bottom: 0; right: 0; z-index: 3; }
+.hero-img .img-placeholder { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    border: none;
+    color: rgba(255,255,255,0.4);
+}
+
+/* ============================================
+   MARQUEE
+   ============================================ */
+.marquee { padding: 20px 0; background: var(--color-dark); overflow: hidden; }
+.marquee-track { display: flex; width: max-content; animation: marquee 25s linear infinite; }
+.marquee-content { display: flex; gap: 48px; padding-right: 48px; }
+.marquee-item { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #ffffff; letter-spacing: 0.02em; white-space: nowrap; }
+.marquee-item svg { width: 18px; height: 18px; fill: var(--color-accent); }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+.about { padding: var(--section-padding) 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-text { font-size: 16px; color: var(--color-text-muted); margin-bottom: 20px; line-height: 1.8; }
+.about-text strong { color: var(--color-text); }
+.about-quote { padding: 20px 24px; border-left: 3px solid var(--color-accent); margin: 32px 0; background: rgba(232,165,0,0.06); border-radius: 0 12px 12px 0; }
+.about-quote p { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-accent-dark); font-style: italic; }
+.about-images { position: relative; }
+.about-img-main { width: 100%; height: 450px; border-radius: 20px; overflow: hidden; }
+.about-img-main .img-placeholder { height: 100%; border-radius: 20px; flex-direction: column; gap: 8px; }
+.about-founder { position: absolute; bottom: -20px; left: -20px; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.about-founder-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--color-dark); display: flex; align-items: center; justify-content: center; }
+.about-founder-avatar svg { width: 24px; height: 24px; fill: #ffffff; }
+.about-founder-info h4 { font-family: var(--font-body); font-size: 15px; font-weight: 600; }
+.about-founder-info p { font-size: 13px; color: var(--color-text-muted); }
+.about-badge { position: absolute; top: 20px; right: -20px; background: var(--color-dark); color: #ffffff; padding: 16px 24px; border-radius: 12px; text-align: center; box-shadow: var(--shadow-md); }
+.about-badge-number { font-family: var(--font-display); font-size: 32px; font-weight: 800; line-height: 1; }
+.about-badge-text { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.about-cta-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--color-accent); font-weight: 600; transition: gap var(--transition); }
+.about-cta-link:hover { gap: 12px; }
+.about-cta-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* ============================================
+   SERVICES SECTION
+   ============================================ */
+.services { padding: var(--section-padding) 0; background: var(--color-bg-elevated); }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.service-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 24px; transition: all var(--transition); position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.service-card:hover { transform: translateY(-8px); border-color: var(--color-accent); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.service-img { height: 180px; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+.service-img .img-placeholder { height: 100%; border-radius: 12px; }
+.service-icon { width: 48px; height: 48px; background: var(--color-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.service-icon svg { width: 24px; height: 24px; fill: #ffffff; }
+.service-card h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.service-tag { font-size: 11px; padding: 4px 10px; background: var(--color-bg); border-radius: 20px; color: var(--color-text-muted); }
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+.stats { padding: var(--section-padding) 0; }
+.stats-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 32px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.stat-icon { width: 56px; height: 56px; margin: 0 auto 20px; background: var(--color-bg-elevated); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.stat-icon svg { width: 28px; height: 28px; fill: var(--color-dark); }
+.stat-number { font-family: var(--font-display); font-size: 44px; font-weight: 800; color: var(--color-dark); line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 14px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ============================================
+   RESULTS/PORTFOLIO SECTION
+   ============================================ */
+.results { padding: var(--section-padding) 0; background: var(--color-bg-elevated); }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.result-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; overflow: hidden; transition: all var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.result-card:hover { transform: translateY(-8px); border-color: var(--color-border-light); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.result-img { height: 200px; position: relative; }
+.result-img .img-placeholder { height: 100%; border-radius: 0; }
+.result-content { padding: 24px; }
+.result-card h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.result-card p { font-size: 14px; color: var(--color-text-muted); }
+
+/* ============================================
+   TESTIMONIALS SECTION
+   ============================================ */
+.testimonials { padding: var(--section-padding) 0; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 32px; transition: all var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.testimonial-card:hover { border-color: var(--color-border-light); }
+.testimonial-card.featured { border-color: var(--color-accent); grid-row: span 2; display: flex; flex-direction: column; box-shadow: 0 4px 16px rgba(232,165,0,0.15); }
+.testimonial-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--color-bg-elevated); display: flex; align-items: center; justify-content: center; }
+.testimonial-avatar svg { width: 24px; height: 24px; fill: var(--color-text-subtle); }
+.testimonial-author h4 { font-family: var(--font-body); font-size: 15px; font-weight: 600; }
+.testimonial-author p { font-size: 13px; color: var(--color-text-muted); }
+.testimonial-rating { display: flex; gap: 2px; margin-bottom: 16px; }
+.testimonial-rating svg { width: 14px; height: 14px; fill: var(--color-accent); }
+.testimonial-text { font-size: 15px; color: var(--color-text-muted); line-height: 1.7; flex: 1; }
+.testimonial-card.featured .testimonial-text { font-size: 16px; }
+
+/* ============================================
+   PRICING SECTION
+   ============================================ */
+.pricing { padding: var(--section-padding) 0; background: var(--color-bg-elevated); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pricing-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 40px 32px; transition: all var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.pricing-card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.pricing-card.featured { border-color: var(--color-accent); background: linear-gradient(180deg, rgba(232,165,0,0.06) 0%, var(--color-bg-card) 100%); box-shadow: 0 4px 16px rgba(232,165,0,0.12); }
+.pricing-badge { display: inline-block; padding: 6px 14px; background: var(--color-bg-elevated); border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 20px; }
+.pricing-card.featured .pricing-badge { background: var(--color-dark); color: #ffffff; }
+.pricing-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.pricing-card .subtitle { font-size: 14px; color: var(--color-text-muted); margin-bottom: 24px; }
+.pricing-price { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--color-border); }
+.pricing-price .currency { font-size: 20px; color: var(--color-text-muted); vertical-align: top; }
+.pricing-price .amount { font-family: var(--font-display); font-size: 48px; font-weight: 800; }
+.pricing-price .period { font-size: 14px; color: var(--color-text-muted); }
+.pricing-features { margin-bottom: 24px; }
+.pricing-features li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 14px; color: var(--color-text-muted); }
+.pricing-features li svg { width: 18px; height: 18px; fill: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+.pricing-note { font-size: 13px; color: var(--color-text-subtle); font-style: italic; margin-bottom: 20px; }
+
+/* ============================================
+   BEHAVIORS SECTION
+   ============================================ */
+.behaviors { padding: var(--section-padding) 0; }
+.behaviors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+.behavior-item { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 12px; transition: all var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.behavior-item:hover { border-color: var(--color-accent); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.behavior-item svg { width: 20px; height: 20px; fill: var(--color-dark); flex-shrink: 0; }
+.behavior-item svg { width: 24px; height: 24px; fill: var(--color-accent); flex-shrink: 0; }
+.behavior-item span { font-size: 14px; font-weight: 500; }
+.behaviors-cta { text-align: center; }
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact { padding: var(--section-padding) 0; background: var(--color-bg-elevated); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-text { font-size: 17px; color: var(--color-text-muted); margin-bottom: 32px; line-height: 1.7; }
+.contact-details { margin-bottom: 32px; }
+.contact-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--color-border); }
+.contact-item:last-child { border-bottom: none; }
+.contact-item svg { width: 24px; height: 24px; fill: var(--color-accent); flex-shrink: 0; }
+.contact-item strong { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.contact-item p { font-size: 15px; color: var(--color-text-muted); }
+.contact-item a { color: var(--color-accent); }
+.contact-social { display: flex; gap: 12px; }
+.contact-social a { padding: 10px 20px; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 50px; font-size: 14px; font-weight: 500; transition: all var(--transition); }
+.contact-social a:hover { background: var(--color-dark); border-color: var(--color-dark); color: #ffffff; }
+.contact-form-wrapper { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 40px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 14px; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { padding: 14px 16px; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 8px; font-family: var(--font-body); font-size: 15px; color: var(--color-text); transition: border-color var(--transition), box-shadow var(--transition); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--color-accent); }
+.form-group select { cursor: pointer; }
+.radio-group { display: flex; gap: 24px; }
+.radio-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 15px; color: var(--color-text-muted); }
+.radio-label input { width: 18px; height: 18px; accent-color: var(--color-accent); }
+.checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; color: var(--color-text-muted); }
+.checkbox-label input { width: 18px; height: 18px; accent-color: var(--color-accent); }
+.checkbox-label a { color: var(--color-accent); text-decoration: underline; }
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta { padding: 80px 0; background: var(--color-dark); text-align: center; }
+.cta-title { font-size: clamp(32px, 4.5vw, 48px); font-weight: 800; color: #ffffff; margin-bottom: 16px; }
+.cta-text { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta .btn-primary { background: var(--color-accent); color: var(--color-dark); border-color: var(--color-accent); }
+.cta .btn-primary:hover { background: var(--color-accent-hover); box-shadow: 0 10px 30px rgba(232,165,0,0.4); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer { padding: 80px 0 24px; border-top: 1px solid var(--color-border); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--color-border); margin-bottom: 24px; }
+.footer-logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+.footer-logo svg { width: 28px; height: 28px; fill: var(--color-dark); }
+.footer-tagline { font-style: italic; color: var(--color-text-muted); margin-bottom: 16px; font-size: 14px; }
+.footer-address { font-size: 14px; color: var(--color-text-subtle); line-height: 1.6; }
+.footer-links h4 { font-family: var(--font-display); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 20px; }
+.footer-links ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a { font-size: 14px; color: var(--color-text-muted); transition: color var(--transition); }
+.footer-links a:hover { color: var(--color-accent-dark); }
+.footer-contact h4 { font-family: var(--font-display); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 20px; }
+.footer-contact p { margin-bottom: 16px; }
+.footer-contact a { color: var(--color-accent-dark); font-size: 18px; font-weight: 600; }
+.footer-social { display: flex; gap: 12px; }
+.footer-social a { font-size: 13px; color: var(--color-text-muted); padding: 8px 16px; background: var(--color-bg-elevated); border-radius: 50px; transition: all var(--transition); border: 1px solid var(--color-border); }
+.footer-social a:hover { background: var(--color-dark); color: #ffffff; border-color: var(--color-dark); }
+.footer-bottom { text-align: center; }
+.footer-bottom p { font-size: 14px; color: var(--color-text-subtle); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero-container { grid-template-columns: 1fr; text-align: center; }
+    .hero-images { display: none; }
+    .hero-ctas, .hero-rating { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-images { order: -1; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-header { grid-template-columns: 1fr; text-align: center; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-card.featured { grid-row: auto; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .behaviors-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    :root { --section-padding: 60px; }
+    .nav-menu { display: none; position: absolute; top: 80px; left: 0; right: 0; background: rgba(25, 18, 8, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); flex-direction: column; padding: 24px; gap: 16px; }
+    .nav-menu.active { display: flex; }
+    .nav-menu a { color: rgba(255,255,255,0.9) !important; }
+    .nav.is-scrolled .nav-menu { background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--color-border); }
+    .nav.is-scrolled .nav-menu a { color: var(--color-text-muted) !important; }
+    .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .behaviors-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .footer-logo { justify-content: center; }
+    .footer-social { justify-content: center; }
+}
+
+/* ============================================
+   WEBFLOW-STYLE ANIMATIONS
+   ============================================ */
+
+/* Base animation keyframes */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Hero animations */
+.hero-content { animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-tag { animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.hero-title { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+.hero-subtitle { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+.hero-ctas { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+.hero-rating { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both; }
+
+/* Hero images with stagger + parallax-ready */
+.hero-img-1 { animation: fadeInRight 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+.hero-img-2 { animation: fadeInRight 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+.hero-img-3 { animation: fadeInRight 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
+.hero-img { transition: transform 0.15s ease-out; }
+
+/* Reveal system - elements hidden by default when JS enabled */
+.js-enabled [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.js-enabled [data-reveal="left"] { transform: translateX(-40px); }
+.js-enabled [data-reveal="right"] { transform: translateX(40px); }
+.js-enabled [data-reveal="scale"] { transform: scale(0.92); }
+.js-enabled [data-reveal].is-visible { opacity: 1; transform: translate(0) scale(1); }
+
+/* Stagger delays */
+.js-enabled [data-reveal][data-delay="1"] { transition-delay: 0.1s; }
+.js-enabled [data-reveal][data-delay="2"] { transition-delay: 0.2s; }
+.js-enabled [data-reveal][data-delay="3"] { transition-delay: 0.3s; }
+.js-enabled [data-reveal][data-delay="4"] { transition-delay: 0.4s; }
+.js-enabled [data-reveal][data-delay="5"] { transition-delay: 0.5s; }
+.js-enabled [data-reveal][data-delay="6"] { transition-delay: 0.6s; }
+
+/* Section headers reveal */
+.section-header { transition: opacity 0.6s ease, transform 0.6s ease; }
+.js-enabled .section-header[data-reveal] { opacity: 0; transform: translateY(30px); }
+.js-enabled .section-header[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+/* Cards reveal with hover lift enhancement */
+.service-card, .stat-card, .result-card, .testimonial-card, .pricing-card, .behavior-item {
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced hover effects */
+.service-card:hover, .result-card:hover, .pricing-card:hover { 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+}
+.testimonial-card:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1); 
+}
+
+/* Stat counter animation */
+.stat-number { transition: color 0.3s ease; }
+.stat-number.is-counting { color: var(--color-text-muted); }
+.stat-number.is-complete { color: var(--color-dark); }
+
+/* Nav scroll effect - already handled in nav section */
+
+/* Marquee pause on hover */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* Button micro-interactions */
+.btn { transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+/* Form focus effects */
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+    box-shadow: 0 0 0 3px rgba(232,165,0,0.2);
+    transform: translateY(-1px);
+}
+
+/* Link underline animation */
+.footer-links a, .contact-social a { 
+    position: relative; 
+}
+.footer-links a::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: -2px; 
+    left: 0; 
+    width: 0; 
+    height: 1px; 
+    background: var(--color-accent); 
+    transition: width 0.3s ease; 
+}
+.footer-links a:hover::after { width: 100%; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .js-enabled [data-reveal] { opacity: 1; transform: none; }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 24 24"><path d="M4.5 12c0-1.5.5-2.5 1.5-3.5 1-1 2-1.5 3.5-1.5.8 0 1.6.2 2.3.5.2-.8.7-1.5 1.2-2-.9-.5-2-.8-3.5-.8C6 4.7 3 7.7 3 12s3 7.3 6.5 7.3c1.5 0 2.6-.3 3.5-.8-.5-.5-1-1.2-1.2-2-.7.3-1.5.5-2.3.5-1.5 0-2.5-.5-3.5-1.5s-1.5-2-1.5-3.5zm15 0c0 1.5-.5 2.5-1.5 3.5s-2 1.5-3.5 1.5c-.8 0-1.6-.2-2.3-.5-.2.8-.7 1.5-1.2 2 .9.5 2 .8 3.5.8 3.5 0 6.5-3 6.5-7.3s-3-7.3-6.5-7.3c-1.5 0-2.6.3-3.5.8.5.5 1 1.2 1.2 2 .7-.3 1.5-.5 2.3-.5 1.5 0 2.5.5 3.5 1.5s1.5 2 1.5 3.5z"/></svg>
+                Dogtor Doolittle
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+17326305326" class="nav-cta">Call Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <!-- Video/Image Background -->
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- Warm Brown Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-tag">NJ's Premier Dog Training</p>
+                <h1 class="hero-title">Transform Your <span class="accent">Dog's</span> Behavior With Quality <span class="accent">Training</span></h1>
+                <p class="hero-subtitle">At Dogtor Doolittle in Laurence Harbor, NJ, we establish healthier communication with your dogs. Working with us, you'll see your dog happy as you adapt them to your routine life.</p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
+                    <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+                </div>
+                <div class="hero-rating">
+                    <div class="hero-avatars">
+                        <div class="avatar">A</div>
+                        <div class="avatar">B</div>
+                        <div class="avatar">C</div>
+                    </div>
+                    <div class="rating-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <div class="rating-info">
+                        <span class="rating-score">4.9</span>
+                        <span class="rating-text">38+ Happy Clients</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-images">
+                <div class="hero-img hero-img-1"><div class="img-placeholder">Dog Training</div></div>
+                <div class="hero-img hero-img-2"><div class="img-placeholder">Before/After</div></div>
+                <div class="hero-img hero-img-3"><div class="img-placeholder">Happy Dogs</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Basic Commands</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Leash Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Behavioral Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Potty Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Aggression</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Reactivity</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Protection Dogs</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Day Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Basic Commands</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Leash Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Behavioral Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Potty Training</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Aggression</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Reactivity</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Protection Dogs</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Day Training</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="section-tag">Who We Are</p>
+                    <h2 class="section-title">Meet Austin, the Dogtor</h2>
+                    <p class="about-text"><strong>Dogtor Doolittle</strong> was founded by Austin Mendoza out of New Jersey. In 2020, Austin rescued a puppy that was poorly behaved. He was forced to teach him how to settle down, and a love for training began.</p>
+                    <p class="about-text">Later that year, Austin was told that he was the <strong>modern day Doctor Doolittle</strong>, for his passion, love for animals, and strong belief that <strong>all dogs</strong> of any size and <strong>breed</strong> can be rehabilitated, and thus Dogtor Doolittle was born!</p>
+                    <div class="about-quote"><p>"Not an animal doctor but I speak dog"</p></div>
+                    <a href="#services" class="about-cta-link">Explore Services <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+                <div class="about-images">
+                    <div class="about-img-main">
+                        <div class="img-placeholder">Austin Mendoza<br><small>Founder & Head Trainer</small></div>
+                    </div>
+                    <div class="about-founder">
+                        <div class="about-founder-avatar">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <div class="about-founder-info">
+                            <h4>Austin Mendoza</h4>
+                            <p>Founder & Director</p>
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <div class="about-badge-number">5+</div>
+                        <div class="about-badge-text">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">What We Offer</p>
+                <h2 class="section-title">Our Training Programs</h2>
+                <p class="section-subtitle">From basic obedience to advanced protection training, we offer comprehensive programs tailored to your dog's needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img"><div class="img-placeholder">Private Lessons</div></div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                    <h3>Private Lessons</h3>
+                    <p>One-on-one training sessions focused on basic obedience and on-leash training at our facility.</p>
+                    <div class="service-tags"><span class="service-tag">Basic</span><span class="service-tag">1-on-1</span><span class="service-tag">10 Sessions</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img"><div class="img-placeholder">Day Training</div></div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
+                    <h3>Day Training</h3>
+                    <p>Monday-Friday dog academy with comprehensive obedience training and structure building.</p>
+                    <div class="service-tags"><span class="service-tag">Intensive</span><span class="service-tag">Mon-Fri</span><span class="service-tag">1-2 Months</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img"><div class="img-placeholder">Lifetime Program</div></div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    <h3>Lifetime Program</h3>
+                    <p>Ongoing private training sessions with lifetime access for continued growth and maintenance.</p>
+                    <div class="service-tags"><span class="service-tag">Advanced</span><span class="service-tag">Lifetime</span><span class="service-tag">2x/Week</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img"><div class="img-placeholder">Protection Dogs</div></div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+                    <h3>Raise & Train</h3>
+                    <p>Our elite program for protection dogs, including litter pick and 12-month comprehensive training.</p>
+                    <div class="service-tags"><span class="service-tag">Elite</span><span class="service-tag">Protection</span><span class="service-tag">12 Months</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-header">
+                <div>
+                    <p class="section-tag">Our Impact</p>
+                    <h2 class="section-title">Numbers That Show Our Success</h2>
+                </div>
+                <p class="section-subtitle">Over the years, we have helped hundreds of dog owners transform their relationship with their pets through proven training methods.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></div>
+                    <div class="stat-number" data-count="500" data-suffix="+">0</div>
+                    <div class="stat-label">Dogs Trained</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <div class="stat-number" data-count="49" data-suffix="" data-decimal="true">0</div>
+                    <div class="stat-label">Google Rating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+                    <div class="stat-number" data-count="38" data-suffix="+">0</div>
+                    <div class="stat-label">5-Star Reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    <div class="stat-number" data-count="100" data-suffix="%">0</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Our Work</p>
+                <h2 class="section-title">Transformations That Speak</h2>
+                <p class="section-subtitle">See the incredible transformations we've achieved with dogs of all breeds and behavioral challenges.</p>
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">Rottweiler Training</div></div>
+                    <div class="result-content">
+                        <h3>Aggression Rehabilitation</h3>
+                        <p>Transformed aggressive Rottweiler into a calm, well-behaved family dog.</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">Pitbull Training</div></div>
+                    <div class="result-content">
+                        <h3>Reactivity Training</h3>
+                        <p>Helped reactive Pitbull become peaceful on walks and in public.</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">Goldendoodle Training</div></div>
+                    <div class="result-content">
+                        <h3>Puppy Obedience</h3>
+                        <p>Eliminated puppy nipping and leash pulling in just 3 weeks.</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">German Shepherd</div></div>
+                    <div class="result-content">
+                        <h3>Protection Training</h3>
+                        <p>Developed elite protection skills while maintaining family-friendly temperament.</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">Lab Mix Training</div></div>
+                    <div class="result-content">
+                        <h3>Basic Obedience</h3>
+                        <p>Built strong foundation with sit, stay, come, and heel commands.</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <div class="result-img"><div class="img-placeholder">Rescue Dog Training</div></div>
+                    <div class="result-content">
+                        <h3>Rescue Rehabilitation</h3>
+                        <p>Helped traumatized rescue dog build confidence and trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behaviors Section -->
+    <section class="behaviors">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">What We Fix</p>
+                <h2 class="section-title">Behavioral Issues We Address</h2>
+                <p class="section-subtitle">No matter the problem, we have a solution. Our training methods work for dogs of all breeds and sizes.</p>
+            </div>
+            <div class="behaviors-grid">
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Leash Pulling</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Dog Aggression</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Potty Training</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Biting</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Destructive Behavior</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Reactivity</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>No Recall</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Leash Manners</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Jumping on People</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Rough Play</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Lack of Leadership</span></div>
+                <div class="behavior-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span>Ignoring Commands</span></div>
+            </div>
+            <div class="behaviors-cta">
+                <a href="tel:+17326305326" class="btn btn-primary">Call Us: (732) 630-5326</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Client Feedback</p>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what dog owners are saying about Dogtor Doolittle.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                        <div class="testimonial-author"><h4>Sarah McEwen</h4><p>Rottweiler Owner</p></div>
+                    </div>
+                    <div class="testimonial-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"Dogtor Doolittle himself really is the dog whisperer!! He did not only fix aggression issues but my 100lb Rottweiler came home a happier, more relaxed than I'd ever seen him!!"</p>
+                </div>
+                <div class="testimonial-card featured">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                        <div class="testimonial-author"><h4>Diana Hernandez</h4><p>Pitbull Owner</p></div>
+                    </div>
+                    <div class="testimonial-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"I have a three year old pittbull and she was very aggressive when out in public. Walking her was dreadful for me. After training with Austin, my walks are so much easier and peaceful. She no longer wants to eat anyone. Austin has taught me how to deal with her in a much better way."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                        <div class="testimonial-author"><h4>Monessa Conrad</h4><p>Pittie Mix Owner</p></div>
+                    </div>
+                    <div class="testimonial-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"Austin took my pittie mix puppy who was getting bigger and more 'independent' by the day and turned her into a well trained young dog. Well worth the investment."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                        <div class="testimonial-author"><h4>Emanuel Reyes</h4><p>Happy Client</p></div>
+                    </div>
+                    <div class="testimonial-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"This man is the GOAT. Want to get your dog trained? This is who you're calling. You got an untrained dog? You call the Dogtor."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                        <div class="testimonial-author"><h4>Alexa Bowman</h4><p>Goldendoodle Owner</p></div>
+                    </div>
+                    <div class="testimonial-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"We picked up a completely different dog. No more aggressive puppy nipping, no more pulling on the leash, and no more not listening."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Simple Pricing</p>
+                <h2 class="section-title">Training Packages</h2>
+                <p class="section-subtitle">Choose the program that best fits your dog's needs. Flexible financing available.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-badge">Starter</div>
+                    <h3>Doo a Little</h3>
+                    <p class="subtitle">10 Private Lessons</p>
+                    <div class="pricing-price"><span class="currency">$</span><span class="amount">1,500</span></div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> 10 Private Lessons at our facility</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> 1 Hour Each Session</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Basic Obedience Training</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> On-Leash Training</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Weekly Homework Required</li>
+                    </ul>
+                    <p class="pricing-note">*2 months to complete lessons</p>
+                    <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Popular</div>
+                    <h3>Day Train</h3>
+                    <p class="subtitle">1 Month Program</p>
+                    <div class="pricing-price"><span class="currency">$</span><span class="amount">3,500</span></div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Monday-Friday Dog Academy</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Basic Obedience & Structure</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Core Commands: Sit, Down, Stay, Come, Heel</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Optional Pick Up & Drop Off</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Ideal for Younger Dogs</li>
+                    </ul>
+                    <p class="pricing-note">Deposit: $700 | Remaining: $2,800</p>
+                    <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-badge">Advanced</div>
+                    <h3>Day Train Expanded</h3>
+                    <p class="subtitle">2 Month Program</p>
+                    <div class="pricing-price"><span class="currency">$</span><span class="amount">4,500</span></div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Advanced Obedience & Confidence</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> On-leash & Off-leash Control</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Extended Stay with Distractions</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Advanced Leash Manners</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Ideal for Reactivity/Aggression</li>
+                    </ul>
+                    <p class="pricing-note">Deposit: $900 | Remaining: $3,600</p>
+                    <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="section-tag">Get In Touch</p>
+                    <h2 class="section-title">Let's Transform Your Dog</h2>
+                    <p class="contact-text">Share your dog's challenges with us and our team will reach out to discuss how we can help create a customized training plan.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <div><strong>Location</strong><p>301 NJ-35 Unit 1<br>Laurence Harbor, NJ 08879</p></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <div><strong>Phone</strong><p><a href="tel:+17326305326">(732) 630-5326</a></p></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <div><strong>Hours</strong><p>Mon-Sun: By Appointment</p></div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://www.instagram.com/dogtor__doolittle/" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/officialdogtordoolittle" target="_blank">Facebook</a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group"><label>Your Name *</label><input type="text" name="name" required></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Email *</label><input type="email" name="email" required></div>
+                            <div class="form-group"><label>Phone *</label><input type="tel" name="phone" required></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Service Interested In</label>
+                            <select name="service">
+                                <option value="">Select a service...</option>
+                                <option value="consultation">Free Consultation</option>
+                                <option value="doo-a-little">Doo a Little - 10 Private Lessons</option>
+                                <option value="day-train">Day Train - 1 Month</option>
+                                <option value="day-train-expanded">Day Train Expanded - 2 Month</option>
+                                <option value="lifetime">Lifetime Program</option>
+                                <option value="raise-train">Raise & Train - Protection</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Your Dog Vaccinated? *</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="vaccinated" value="yes" required><span>Yes</span></label>
+                                <label class="radio-label"><input type="radio" name="vaccinated" value="no"><span>No</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group"><label>Tell Us About Your Dog</label><textarea name="message" rows="4" placeholder="What challenges are you facing?"></textarea></div>
+                        <div class="form-group"><label class="checkbox-label"><input type="checkbox" name="terms" required><span>I consent to the <a href="#">Terms & Conditions</a></span></label></div>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Train Today, Pay Tomorrow</h2>
+            <p class="cta-text">Dog-friendly financing available. Don't let budget hold you back from getting your dog the training they deserve.</p>
+            <a href="tel:+17326305326" class="btn btn-primary">Call Now: (732) 630-5326</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <svg viewBox="0 0 24 24"><path d="M4.5 12c0-1.5.5-2.5 1.5-3.5 1-1 2-1.5 3.5-1.5.8 0 1.6.2 2.3.5.2-.8.7-1.5 1.2-2-.9-.5-2-.8-3.5-.8C6 4.7 3 7.7 3 12s3 7.3 6.5 7.3c1.5 0 2.6-.3 3.5-.8-.5-.5-1-1.2-1.2-2-.7.3-1.5.5-2.3.5-1.5 0-2.5-.5-3.5-1.5s-1.5-2-1.5-3.5zm15 0c0 1.5-.5 2.5-1.5 3.5s-2 1.5-3.5 1.5c-.8 0-1.6-.2-2.3-.5-.2.8-.7 1.5-1.2 2 .9.5 2 .8 3.5.8 3.5 0 6.5-3 6.5-7.3s-3-7.3-6.5-7.3c-1.5 0-2.6.3-3.5.8.5.5 1 1.2 1.2 2 .7-.3 1.5-.5 2.3-.5 1.5 0 2.5.5 3.5 1.5s1.5 2 1.5 3.5z"/></svg>
+                        Dogtor Doolittle
+                    </a>
+                    <p class="footer-tagline">"Not an animal doctor but I speak dog"</p>
+                    <p class="footer-address">301 NJ-35 Unit 1<br>Laurence Harbor, NJ 08879</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#pricing">Private Lessons</a></li>
+                        <li><a href="#pricing">Day Training</a></li>
+                        <li><a href="#pricing">Lifetime Program</a></li>
+                        <li><a href="#pricing">Protection Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><a href="tel:+17326305326">(732) 630-5326</a></p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/dogtor__doolittle/" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/officialdogtordoolittle" target="_blank">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2025 Dogtor Doolittle. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+        
+        // Enable JS flag for CSS
+        document.documentElement.classList.add('js-enabled');
+        
+        // ============================================
+        // INTERSECTION OBSERVER - REVEAL ON SCROLL
+        // ============================================
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('[data-reveal]');
+            
+            if (!('IntersectionObserver' in window)) {
+                // Fallback: show all
+                revealElements.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+        }
+        
+        // ============================================
+        // STAGGERED CARD REVEALS
+        // ============================================
+        function initStaggeredReveals() {
+            const cardGroups = [
+                { selector: '.services-grid .service-card', parent: '.services' },
+                { selector: '.stats-grid .stat-card', parent: '.stats' },
+                { selector: '.results-grid .result-card', parent: '.results' },
+                { selector: '.testimonials-grid .testimonial-card', parent: '.testimonials' },
+                { selector: '.pricing-grid .pricing-card', parent: '.pricing' },
+                { selector: '.behaviors-grid .behavior-item', parent: '.behaviors' }
+            ];
+            
+            cardGroups.forEach(group => {
+                const cards = document.querySelectorAll(group.selector);
+                cards.forEach((card, index) => {
+                    card.setAttribute('data-reveal', '');
+                    card.setAttribute('data-delay', Math.min(index + 1, 6));
+                });
+            });
+        }
+        
+        // ============================================
+        // ANIMATED STAT COUNTERS
+        // ============================================
+        function initStatCounters() {
+            const stats = document.querySelectorAll('.stat-number[data-count]');
+            let hasAnimated = false;
+            
+            if (!stats.length) return;
+            
+            function animateValue(element, start, end, duration) {
+                const startTime = performance.now();
+                const isDecimal = element.dataset.decimal === 'true';
+                element.classList.add('is-counting');
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing: easeOutQuart
+                    const eased = 1 - Math.pow(1 - progress, 4);
+                    let current;
+                    
+                    if (isDecimal) {
+                        // For 4.9 rating - animate from 0 to 49, display as 4.9
+                        current = (start + (end - start) * eased) / 10;
+                        element.textContent = current.toFixed(1) + (element.dataset.suffix || '');
+                    } else {
+                        current = Math.floor(start + (end - start) * eased);
+                        element.textContent = current.toLocaleString() + (element.dataset.suffix || '');
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.classList.remove('is-counting');
+                        element.classList.add('is-complete');
+                    }
+                }
+                
+                requestAnimationFrame(update);
+            }
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        stats.forEach((stat, index) => {
+                            setTimeout(() => {
+                                const target = parseInt(stat.dataset.count, 10);
+                                animateValue(stat, 0, target, 2000);
+                            }, index * 150);
+                        });
+                        statsObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) statsObserver.observe(statsSection);
+        }
+        
+        // ============================================
+        // PARALLAX HERO IMAGES
+        // ============================================
+        function initParallax() {
+            const heroImages = document.querySelectorAll('.hero-img');
+            if (!heroImages.length || window.innerWidth < 1024) return;
+            
+            let ticking = false;
+            
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                heroImages.forEach((img, index) => {
+                    const speed = 0.05 + (index * 0.02);
+                    const yOffset = scrollY * speed;
+                    img.style.transform = `translateY(${yOffset}px)`;
+                });
+                ticking = false;
+            }
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+        
+        // ============================================
+        // NAV SCROLL EFFECT
+        // ============================================
+        function initNavScroll() {
+            const nav = document.querySelector('.nav');
+            if (!nav) return;
+            
+            let ticking = false;
+            
+            function updateNav() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('is-scrolled');
+                } else {
+                    nav.classList.remove('is-scrolled');
+                }
+                ticking = false;
+            }
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateNav);
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+        
+        // ============================================
+        // MOBILE NAV TOGGLE
+        // ============================================
+        function initMobileNav() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navToggle || !navMenu) return;
+            
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close on link click
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+        
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // ============================================
+        // FORM HANDLING
+        // ============================================
+        function initForm() {
+            const form = document.querySelector('.contact-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Button loading state
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+                
+                // Simulate send (replace with actual form handling)
+                setTimeout(() => {
+                    alert('Thank you! We will contact you shortly.');
+                    form.reset();
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 800);
+            });
+        }
+        
+        // ============================================
+        // CARD HOVER TILT (Optional micro-interaction)
+        // ============================================
+        function initCardTilt() {
+            const cards = document.querySelectorAll('.pricing-card, .service-card');
+            if (window.innerWidth < 1024) return;
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+        
+        // ============================================
+        // INIT ALL
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add reveal attributes to section headers
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.setAttribute('data-reveal', '');
+            });
+            
+            // About section elements
+            const aboutText = document.querySelector('.about-text-content');
+            const aboutImages = document.querySelector('.about-images');
+            if (aboutText) aboutText.setAttribute('data-reveal', 'left');
+            if (aboutImages) aboutImages.setAttribute('data-reveal', 'right');
+            
+            // Contact section
+            const contactInfo = document.querySelector('.contact-info');
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if (contactInfo) { contactInfo.setAttribute('data-reveal', 'left'); }
+            if (contactForm) { contactForm.setAttribute('data-reveal', 'right'); contactForm.setAttribute('data-delay', '2'); }
+            
+            // Initialize all features
+            initStaggeredReveals();
+            initScrollReveal();
+            initStatCounters();
+            initParallax();
+            initNavScroll();
+            initMobileNav();
+            initSmoothScroll();
+            initForm();
+            initCardTilt();
+        });
+    })();
+    </script>
+</body>
+</html>

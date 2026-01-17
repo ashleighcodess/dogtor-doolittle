@@ -291,6 +291,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     z-index: 1;
     cursor: pointer;
+    transition: top 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                left 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                width 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.5s ease,
+                border-color 0.3s ease;
 }
 /* Expanded card overlay */
 .services-overlay {
@@ -314,11 +319,18 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     z-index: 1000 !important;
     border-color: var(--color-accent);
     box-shadow: 0 40px 100px rgba(0,0,0,0.4);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 1 !important;
+    transform: none !important;
 }
-.service-card-expanded .service-img { height: 250px; }
-.service-card-expanded h3 { font-size: 24px; }
-.service-card-expanded p { font-size: 16px; }
+.service-card-expanded .service-img { height: 250px; transition: height 0.5s ease; }
+.service-card-expanded h3 { font-size: 24px; transition: font-size 0.5s ease; }
+.service-card-expanded p { font-size: 16px; transition: font-size 0.5s ease; }
+
+/* Override reveal animations for service cards during expansion */
+.service-card.service-card-expanded[data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+}
 .service-img { height: 180px; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
 .service-img .img-placeholder { height: 100%; border-radius: 12px; }
 .service-icon { width: 48px; height: 48px; background: var(--color-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -1159,7 +1171,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
         // ============================================
         function initStaggeredReveals() {
             const cardGroups = [
-                { selector: '.services-grid .service-card', parent: '.services' },
                 { selector: '.stats-grid .stat-card', parent: '.stats' },
                 { selector: '.results-grid .result-card', parent: '.results' },
                 { selector: '.testimonials-grid .testimonial-card', parent: '.testimonials' },
@@ -1341,7 +1352,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
         // CARD HOVER TILT (Optional micro-interaction)
         // ============================================
         function initCardTilt() {
-            const cards = document.querySelectorAll('.pricing-card, .service-card');
+            const cards = document.querySelectorAll('.pricing-card');
             if (window.innerWidth < 1024) return;
             
             cards.forEach(card => {

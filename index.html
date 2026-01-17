@@ -135,14 +135,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     z-index: 1;
 }
 
-.hero-container { 
-    max-width: var(--container-max); 
-    margin: 0 auto; 
-    padding: 0 24px; 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 60px; 
-    align-items: center;
+.hero-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
     position: relative;
     z-index: 2;
 }
@@ -176,7 +173,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     margin-bottom: 32px; 
     line-height: 1.8; 
 }
-.hero-ctas { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+.hero-ctas { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
 .hero-ctas .btn-primary {
     background: var(--color-accent);
     color: var(--color-dark);
@@ -197,7 +194,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     border-color: #ffffff;
 }
 
-.hero-rating { display: flex; align-items: center; gap: 16px; }
+.hero-rating { display: flex; align-items: center; gap: 16px; justify-content: center; }
 .hero-avatars { display: flex; }
 .hero-avatars .avatar { 
     width: 40px; 
@@ -748,11 +745,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
                         <span class="rating-text">38+ Happy Clients</span>
                     </div>
                 </div>
-            </div>
-            <div class="hero-images">
-                <div class="hero-img hero-img-1"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=500&fit=crop" alt="Dog training session"></div>
-                <div class="hero-img hero-img-2"><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=500&fit=crop" alt="Well-trained dog"></div>
-                <div class="hero-img hero-img-3"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=500&fit=crop" alt="Happy trained dog"></div>
             </div>
         </div>
     </section>

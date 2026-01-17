@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 /* ============================================
    NAVIGATION
    ============================================ */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; backdrop-filter: blur(0); border-bottom: 1px solid transparent; transition: all 0.3s ease; }
+.nav { position: absolute; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; }
 .nav-container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 220px; transition: height 0.3s ease; }
 .nav-logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; transition: color 0.3s ease; }
 .nav-logo svg { width: 32px; height: 32px; fill: var(--color-accent); transition: fill 0.3s ease; }
@@ -84,14 +84,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: #ffffff; transition: all 0.3s ease; }
 
-/* Nav scrolled state */
-.nav.is-scrolled { background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-border); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.nav.is-scrolled .nav-container { height: 70px; }
-.nav.is-scrolled .nav-logo { color: var(--color-dark); }
-.nav.is-scrolled .nav-logo-img { height: 55px; object-fit: cover; object-position: center; }
-.nav.is-scrolled .nav-menu a { color: var(--color-text-muted); }
-.nav.is-scrolled .nav-menu a:hover { color: var(--color-accent-dark); }
-.nav.is-scrolled .nav-toggle span { background: var(--color-dark); }
 
 /* ============================================
    HERO SECTION - Cinematic Video Style
@@ -463,8 +455,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     .nav-menu { display: none; position: absolute; top: 80px; left: 0; right: 0; background: rgba(25, 18, 8, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); flex-direction: column; padding: 24px; gap: 16px; }
     .nav-menu.active { display: flex; }
     .nav-menu a { color: rgba(255,255,255,0.9) !important; }
-    .nav.is-scrolled .nav-menu { background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--color-border); }
-    .nav.is-scrolled .nav-menu a { color: var(--color-text-muted) !important; }
     .nav-cta { display: none; }
     .nav-toggle { display: flex; }
     .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -1238,32 +1228,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
         }
         
         // ============================================
-        // NAV SCROLL EFFECT
-        // ============================================
-        function initNavScroll() {
-            const nav = document.querySelector('.nav');
-            if (!nav) return;
-            
-            let ticking = false;
-            
-            function updateNav() {
-                if (window.scrollY > 50) {
-                    nav.classList.add('is-scrolled');
-                } else {
-                    nav.classList.remove('is-scrolled');
-                }
-                ticking = false;
-            }
-            
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateNav);
-                    ticking = true;
-                }
-            }, { passive: true });
-        }
-        
-        // ============================================
         // MOBILE NAV TOGGLE
         // ============================================
         function initMobileNav() {
@@ -1388,7 +1352,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
             initScrollReveal();
             initStatCounters();
             initParallax();
-            initNavScroll();
             initMobileNav();
             initSmoothScroll();
             initForm();

@@ -427,16 +427,19 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 .instagram-grid {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
+    gap: 16px;
+    flex-wrap: nowrap;
 }
 .instagram-embed {
-    flex: 0 1 auto;
-    max-width: 540px;
+    flex: 1 1 25%;
+    min-width: 0;
     border-radius: 12px;
     overflow: hidden;
 }
 .instagram-embed .instagram-media {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
     margin: 0 !important;
     border-radius: 12px !important;
 }

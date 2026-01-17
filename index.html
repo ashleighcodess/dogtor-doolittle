@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
 .nav-container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
 .nav-logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; transition: color 0.3s ease; }
 .nav-logo svg { width: 32px; height: 32px; fill: var(--color-accent); transition: fill 0.3s ease; }
+.nav-logo-img { height: 45px; width: auto; object-fit: contain; }
 .nav-menu { display: flex; align-items: center; gap: 32px; }
 .nav-menu a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); transition: color var(--transition); }
 .nav-menu a:hover { color: var(--color-accent); }
@@ -585,7 +586,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; lin
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="nav-logo">
-                <svg viewBox="0 0 24 24"><path d="M4.5 12c0-1.5.5-2.5 1.5-3.5 1-1 2-1.5 3.5-1.5.8 0 1.6.2 2.3.5.2-.8.7-1.5 1.2-2-.9-.5-2-.8-3.5-.8C6 4.7 3 7.7 3 12s3 7.3 6.5 7.3c1.5 0 2.6-.3 3.5-.8-.5-.5-1-1.2-1.2-2-.7.3-1.5.5-2.3.5-1.5 0-2.5-.5-3.5-1.5s-1.5-2-1.5-3.5zm15 0c0 1.5-.5 2.5-1.5 3.5s-2 1.5-3.5 1.5c-.8 0-1.6-.2-2.3-.5-.2.8-.7 1.5-1.2 2 .9.5 2 .8 3.5.8 3.5 0 6.5-3 6.5-7.3s-3-7.3-6.5-7.3c-1.5 0-2.6.3-3.5.8.5.5 1 1.2 1.2 2 .7-.3 1.5-.5 2.3-.5 1.5 0 2.5.5 3.5 1.5s1.5 2 1.5 3.5z"/></svg>
+                <img src="newlogo/logofornavheader.png" alt="Dogtor Doolittle Logo" class="nav-logo-img">
                 Dogtor Doolittle
             </a>
             <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
